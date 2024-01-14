@@ -1,0 +1,36 @@
+<% if(orders.length) { %>
+    <div style=" margin-top: auto; margin-left: 37vw;">
+        <table style="border: 1px solid black; border-collapse: collapse;">
+            <tr>
+                <th style="border: 1px solid black; border-collapse: collapse; padding: 10px;">
+                    Orders
+                </th>
+                <th style="border: 1px solid black; border-collapse: collapse;  padding: 10px;">
+                    Time
+                </th>
+            </tr>
+    <% orders.forEach((order) => { %>
+        <tr>
+            <td style="border: 1px solid black; border-collapse: collapse; padding: 10px;">
+                <a style="text-decoration: none; color: black;" class="link" href="/customers/orders/<%= order._id %>"><%= order._id %></a>
+            </td>
+            <td style="border: 1px solid black; border-collapse: collapse; padding: 10px;">
+                <%= moment(order.createdAt).format('hh:mm A') %>
+            </td>
+            <br>
+        </tr>
+    <% }) %>
+    </table>
+</div>
+<% } else { %>
+    <div class="empty_cart">
+        <div class="empty_details">
+            <h1>No Orders Yet</h1>
+            <p>You probably haven't ordered any product yet.
+                To buy product, go to the main page.
+            </p>
+            <a href="/" ><button style="background-color: orange; border:none; height: 50px; width: 100px; color: white; border-radius: 4px; cursor: pointer;">Go back</button></a>
+        </div>
+            <img style="margin-bottom: 50px;" src="/img/empty-cart.png" alt="empty-cart" >
+    </div>
+<% } %>
